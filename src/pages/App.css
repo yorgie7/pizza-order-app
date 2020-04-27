@@ -1,0 +1,24 @@
+
+.usrImg {
+  text-align: center;
+  max-width: 70px;
+  
+}
+
+.divHideScroll::-webkit-scrollbar {
+    width: 0 !important
+}
+.divHideScroll {
+  height: 92vh;
+  overflow: scroll;
+}
+
+.divHideScrollUser::-webkit-scrollbar {
+  width: 0 !important
+}
+.divHideScrollUser {
+height: 90vh;
+overflow: scroll;
+}
+
+

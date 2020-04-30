@@ -7,48 +7,54 @@ import './App.css';
 const MenuList = [
     {
         "id": 1,
-        "price": "299",
-        "name": "Vesuvius",
+        "price": 299,
+        "category": "non-veg",
+        "name": "Pizza-1",
         "ImgUrl": 'https://bit.ly/3eRNZIz'
     },
     {
         "id": 7,
-        "price": "299",
-        "name": "Vesuvius",
+        "price": 299,
+        "category": "veg",
+        "name": "Pizza-2",
         "ImgUrl": 'https://bit.ly/3aHgYLQ'
     },
     {
         "id": 8,
         "price": 299,
-        "name": "Vesuvius",
+        "category": "non-veg",
+        "name": "Pizza-3",
         "ImgUrl": 'https://bit.ly/3cP5aIS'
     },
     {
         "id": 2,
         "price": 199,
-        "name": "Vesuvius",
+        "name": "Pizza-4",
         "ImgUrl": 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&w=1000&q=80'
     }, {
         "id": 3,
         "price": 399,
-        "name": "Vesuvius",
+        "name": "Pizza-5",
         "ImgUrl": 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&w=1000&q=80'
     },
     {
         "id": 4,
         "price": 299,
-        "name": "Vesuvius",
+        "category": "veg",
+        "name": "Pizza-6",
         "ImgUrl": 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&w=1000&q=80'
     }, {
         "id": 5,
         "price": 299,
-        "name": "Vesuvius",
+        "category": "veg",
+        "name": "Pizza-7",
         "ImgUrl": 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&w=1000&q=80'
     },
     {
         "id": 6,
         "price": 299,
-        "name": "Vesuvius",
+        "category": "veg",
+        "name": "Pizza-8",
         "ImgUrl": 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&w=1000&q=80'
     }
 ];
@@ -64,7 +70,7 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        TotelAmmount: 0,
+            TotelAmmount: 0,
             orders: []
         }
         this.Items = {
@@ -78,11 +84,14 @@ class Home extends Component {
 
 
     async AddF(orderDetails) {
-       console.log('Home line 85');
+
+        console.log('Home line 88');
         await this.setState({ TotelAmmount: this.state.TotelAmmount + orderDetails.totel });
-        await this.setState({ orders: this.state.orders.concat(orderDetails.orderItem) });
+
+        await this.setState({ orders: this.state.orders.concat({...orderDetails.orderItem , quantity: orderDetails.quantity})});
+
         console.log(this.state);
-     
+
     }
 
     AddToList() {
@@ -96,10 +105,11 @@ class Home extends Component {
     render() {
         return (<>
             <Navbar title="Pizza- App" />
+            <div style={{ display : 'flex', flexDirection: "row"}}>
             <div style={{
                 margin: '40px 0 0 10%',
                 height: '75vh', overflow: 'scroll',
-                width: '60%', minWidth: '400px'
+                width: '50%', minWidth: '400px'
             }} className='divHideScroll'>
                 {
                     this.Items.Menu.map(m => (
@@ -112,12 +122,29 @@ class Home extends Component {
                     )
                 }
             </div>
+            <div style={{
+                margin: '40px 0 0 10%',
+                height: '75vh', overflow: 'scroll',
+                width: '30%', minWidth: '400px'
+            }} className='divHideScroll'>
+                { 
+                    this.state.orders.map((m, i) => (
+                        <div key={i}>
+
+                            <p>{m.quantity} {m.name}</p>
+
+                        </div>)
+                    )
+                }
+            </div>
+                </div>
+
             <div style={{ textAlign: 'center' }}>
                 <button onClick={this.AddToList}>Place Order</button>
 
                 <Link to='/cart'>GO To Cart</Link>
             </div>
-          
+
         </>
         )
     }

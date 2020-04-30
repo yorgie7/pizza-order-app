@@ -26,7 +26,7 @@ class Cart extends Component {
         return (<>
             <Navbar title="Your Orders" />
             <div >
-     { this.props.item.orders.map( (m, i) => <p key={i}> {m.name} </p>)}
+     { this.props.item.orders.map( (m, i) => <p key={i}>{m.id}  {m.name} </p>)}
             </div>
         </>
         )

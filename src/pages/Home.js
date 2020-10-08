@@ -82,10 +82,9 @@ class Home extends Component {
     }
 
 
-
     async AddF(orderDetails) {
 
-        console.log('Home line 88');
+       // console.log('Home line 88');
         await this.setState({ TotelAmmount: this.state.TotelAmmount + orderDetails.totel });
 
         await this.setState({ orders: this.state.orders.concat({...orderDetails.orderItem , quantity: orderDetails.quantity})});
@@ -95,9 +94,14 @@ class Home extends Component {
     }
 
     AddToList() {
-
+       if (this.state.orders.length> 0){ 
         console.log('state sent to Cart');
         this.props.GoToCart(this.state);
+    }
+        else{
+            console.log("empty list");
+            alert('List is empty...')
+        }
 
     }
 

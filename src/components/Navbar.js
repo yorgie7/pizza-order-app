@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 const nav= {textAlign: 'center', 
         justifyContent:'center', 
-        height:'6vh',backgroundColor:'blue',
-        paddingTop:'2vh', fontSize:'4vh', color:'white'
+        height:'5vh',backgroundColor:'#56a3f0',
+        paddingTop:'2vh', fontSize:'20px', color:'white'
         }
 
 class Navbar extends Component {

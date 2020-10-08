@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import Navbar from '../components/Navbar';
 
 const menuStyle = {
@@ -9,24 +8,16 @@ const menuStyle = {
 };
 
 class Cart extends Component {
-    constructor(props) {
-        super(props);
-        this.state = this.props.item;
-
-
-    }
-
 
 
     render() {
-
-        console.log(this.state.orders);
     
-
-        return (<>
+         console.log('hihihi');
+        return (
+        <>
             <Navbar title="Your Orders" />
             <div >
-     { this.props.item.orders.map( (m, i) => <p key={i}>{m.id}  {m.name} </p>)}
+            { this.props.item.orders.map( (m, i) => <p key={i}>{m.id}  {m.name} </p>)}
             </div>
         </>
         )

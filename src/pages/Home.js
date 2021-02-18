@@ -93,7 +93,7 @@ class Home extends Component {
 
     }
 
-    AddToList() {
+     AddToList= () => {
        if (this.state.orders.length> 0){ 
         console.log('state sent to Cart');
         this.props.GoToCart(this.state);
@@ -107,35 +107,45 @@ class Home extends Component {
 
 
     render() {
+
+        const {orders} = this.state;
         return (<>
             <Navbar title="Pizza- App" />
+
             <div style={{ display : 'flex', flexDirection: "row"}}>
             <div style={{
                 margin: '40px 0 0 10%',
                 height: '75vh', overflow: 'scroll',
-                width: '50%', minWidth: '400px'
+                width: '50%', 
+                minWidth: '400px'
             }} className='divHideScroll'>
                 {
-                    this.Items.Menu.map(m => (
-                        <div key={m.id}
-                            style={menuStyle}>
+                    this.Items.Menu.map( menu => (
+                        <div key={menu.id} style={menuStyle}>
 
-                            <SingleItem item={m} AddItemsCart={this.AddF} />
+                            <SingleItem item={menu} AddItemsCart={this.AddF} />
 
                         </div>)
                     )
                 }
             </div>
+           
+           
             <div style={{
-                margin: '40px 0 0 10%',
+                margin: '40px 40px 0 10%',
                 height: '75vh', overflow: 'scroll',
-                width: '30%', minWidth: '400px'
-            }} className='divHideScroll'>
+                width: '30%',
+                 minWidth: '400px',
+                border: '2px solid skyblue'
+            }} 
+            className='divHideScroll'>
+                        <p>Your Orders</p>
+
                 { 
-                    this.state.orders.map((m, i) => (
+                    orders.map((order, i) => (
                         <div key={i}>
 
-                            <p>{m.quantity} {m.name}</p>
+                            <p>{order.quantity} {order.name}</p>
 
                         </div>)
                     )
